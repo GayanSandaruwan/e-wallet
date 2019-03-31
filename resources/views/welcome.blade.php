@@ -53,7 +53,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 50px;
             }
 
             .links > a {
@@ -66,8 +66,20 @@
                 text-transform: uppercase;
             }
 
+            .icon-size{
+                .fa-2x
+            }
+
             .m-b-md {
                 margin-bottom: 30px;
+            }
+            @media only screen and (min-width: 768px) {
+                .icon-size{
+                    .fa-4x
+                }
+                .title {
+                    font-size: 84px;
+                }
             }
         </style>
     </head>
@@ -89,7 +101,7 @@
 
             <div class="content">
                 <div class="title m-b-md animated bounceOutRight infinite slower delay-3s">
-                    <span><i class="fab fa-4x fa-google-wallet"></i></span>
+                    <span><i class="fab icon-size fa-google-wallet"></i></span>
                 </div>
                 <div class="title m-b-md">
                     Welcome to E-Wallet
