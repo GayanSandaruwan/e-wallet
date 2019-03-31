@@ -16,6 +16,11 @@ class GoalController extends Controller
 
     private $add_goal_form = "goal.add_goal";
 
+    private $completed_goals = "goal.completed";
+
+    private $incompleted_goals = "goal.incomplete";
+
+
     public function showAddGoalForm()
     {
 
@@ -26,6 +31,25 @@ class GoalController extends Controller
 
     }
 
+    public function showCompletedGoals(){
+        $goals_waith_accounts = Goal::with("account")
+            ->where('user_id', Auth::user()->getAuthIdentifier())
+            ->where("state","success")
+            ->orderBy("updated_at","DESC")
+            ->get()->all();
+//        var_dump($goals_waith_accounts[0]);
+        return View::make($this->completed_goals)->with('goals',$goals_waith_accounts);
+    }
+
+    public function showIncompleteGoals(){
+        $goals_waith_accounts = Goal::with("account")
+            ->where('user_id', Auth::user()->getAuthIdentifier())
+            ->where("state","created")
+            ->orderBy("updated_at","DESC")
+            ->get()->all();
+//        var_dump($goals_waith_accounts[0]);
+        return View::make($this->incompleted_goals)->with('goals',$goals_waith_accounts);
+    }
 
     /**
      * Get a validator for an incoming add account request.

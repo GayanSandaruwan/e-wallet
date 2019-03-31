@@ -28,8 +28,8 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/goals', 'GoalController@showAddGoalForm')->name('addGoalForm');
     Route::post('/goals', 'GoalController@addGoal')->name('addGoal');
 
-    Route::get('/goals/complete','GoalController@completedGoalsForm')->name('completedGoals');
-    Route::get('/goals/incomplete','GoalController@incompleteGoalsForm')->name('incompleteGoals');
+    Route::get('/goals/complete','GoalController@showCompletedGoals')->name('completedGoals');
+    Route::get('/goals/incomplete','GoalController@showIncompleteGoals')->name('incompleteGoals');
 
 
     Route::get('/transactions','TransactionController@showAddTransactionForm')->name('addTransactionForm');

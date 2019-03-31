@@ -99,6 +99,7 @@ class TransactionController extends Controller
 
         foreach ($goals as $goal){
             $goal->notified = true;
+            $goal->state = "success";
             array_push($goalsarr, $goal->goal_name);
             $goal->save();
 
