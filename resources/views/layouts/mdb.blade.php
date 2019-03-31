@@ -35,8 +35,8 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name') }}
+            <a class="navbar-brand" style="padding-bottom: 0px; padding-top: 0px" href="{{ url('/') }}">
+                <i class="fab fa-2x fa-google-wallet"></i> {{ config('app.name') }}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -62,17 +62,17 @@
                         @endif
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('transactionSummaryForm') }}">Summary</a>
+                            <a class="nav-link" href="{{ route('transactionSummaryForm') }}"><i class="fas fa-poll"></i> Summary</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('addTransactionForm') }}">Income/Expenses</a>
+                            <a class="nav-link" href="{{ route('addTransactionForm') }}"><i class="fas fa-sync"></i> Income/Expenses</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('addAccountForm') }}">Add Account</a>
+                            <a class="nav-link" href="{{ route('addAccountForm') }}"><i class="far fa-calendar-plus"></i> Add Account</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Goals <span class="caret"></span>
+                                <i class="fas fa-bullseye"></i> Goals <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -86,25 +86,25 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('about') }}">About</a>
+                            <a class="nav-link" href="{{route('about') }}"><i class="far fa-question-circle"></i> About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                <i class="fas fa-user-tie"></i> {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    <i class="fas fa-user-clock"></i> {{ __('Logout') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                                 <a class="dropdown-item" href="{{ route('pasword_update') }}">
-                                    Update Password
+                                    <i class="fas fa-key"></i> Update Password
                                 </a>
                             </div>
                         </li>

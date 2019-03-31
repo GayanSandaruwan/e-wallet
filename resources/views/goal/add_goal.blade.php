@@ -57,7 +57,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Add Goal
+                                        <i class="fas fa-arrows-alt"></i> Add Goal
                                     </button>
                                 </div>
                             </div>
