@@ -69,8 +69,8 @@
         <div class="row justify-content-center">
             <div class="col">
                 <div class="card">
-                    <div class="card-header">Summary of "{{$account->account_name}}" &nbsp; &nbsp;
-                        Current Balance : "{{$account->balance}}" &nbsp; Available Balance : "{{$available_balance}}"</div>
+                    <div class="card-header">Summary of "{{$summary_account->account_name}}" &nbsp; &nbsp;
+                        Current Balance : "{{$summary_account->balance}}" &nbsp; Available Balance : "{{$available_balance}}"</div>
                     <div class="card-body">
                         <canvas id="lineChart"></canvas>
                     </div>

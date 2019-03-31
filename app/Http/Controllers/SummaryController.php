@@ -113,14 +113,13 @@ class SummaryController extends Controller
             }
         }
 
-        $account = Account::get('id',$request['account_id']);
-
+        $account = Account::where('id',1)->get()->all()[0];
         return $this->showTransactionSummaryForm()->with('balances',$balance_progress)
             ->with('incomes',$income_values)
             ->with('expenses',$expense_values)
             ->with('labels', $months)
             ->with('available_balance',$total_bal)
-            ->with('account',$account);
+            ->with('summary_account',$account);
 
     }
 
