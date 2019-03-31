@@ -45,12 +45,39 @@ class GoalController extends Controller
         $goals_waith_accounts = Goal::with("account")
             ->where('user_id', Auth::user()->getAuthIdentifier())
             ->where("state","created")
+            ->orWhere("state","incomplete")
             ->orderBy("updated_at","DESC")
             ->get()->all();
 //        var_dump($goals_waith_accounts[0]);
         return View::make($this->incompleted_goals)->with('goals',$goals_waith_accounts);
     }
 
+
+    public function addCompletedGoal(Request $request){
+
+//        var_dump($request["goal_id"]);
+
+        $goal = Goal::where("id",$request["goal_id"])->get()[0];
+        $goal->state = "success";
+
+        $goal->save();
+
+        return redirect(route("incompleteGoals"));
+    }
+
+    public function addIncompleteGoal(Request $request){
+
+//        var_dump($request["goal_id"]);
+
+
+        $goal = Goal::where("id",$request["goal_id"])->get()[0];
+//        var_dump($goal->state);
+        $goal->state = "incomplete";
+
+        $goal->save();
+
+        return redirect(route("completedGoals"));
+    }
     /**
      * Get a validator for an incoming add account request.
      *

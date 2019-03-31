@@ -23,7 +23,17 @@
                                 Current balance of target_account : {{$goal->account["balance"]}}
                             </p>
                             <!-- Button -->
-                            <a href="#" class="btn btn-primary"><i class="fas fa-times-circle"></i> Mark as Incomplete</a>
+                            <form method="POST" action="{{ route('addIncompleteGoal') }}">
+                                @csrf
+                                <input id="goal_id" type="text"  name="goal_id" value="{{ $goal->id }}" required hidden>
+                                <div class="form-group row mb-0">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-times-circle"></i> Mark as Incomplete
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
 
                         </div>
 

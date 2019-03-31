@@ -23,8 +23,17 @@
                                 Current balance of target_account : {{$goal->account["balance"]}}
                             </p>
                             <!-- Button -->
-                            <a href="#" class="btn btn-primary"><i class="fas fa-check-double"></i> Mark as Completed</a>
-
+                            <form method="POST" action="{{ route('addCompletedGoal') }}">
+                                @csrf
+                                <input id="goal_id" type="text"  name="goal_id" value="{{ $goal->id }}" required hidden>
+                                <div class="form-group row mb-0">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-check-double"></i> Mark as Completed
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
 
                     </div>
