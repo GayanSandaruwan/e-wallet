@@ -45,7 +45,7 @@ class SummaryController extends Controller
             ->where('account_id',$request['account_id'])
             ->whereDate('effective_date','>=',date($request['start_month']))
             ->whereDate('effective_date','<', date(strval($request['end_month'])))
-            ->groupBy(DB::raw('YEAR(effective_date) DESC , MONTH(effective_date) DESC'))
+            ->groupBy(DB::raw('YEAR(effective_date) , MONTH(effective_date)'))
             ->get()->all();
         $expenses = DB::table('transactions')
             ->select(DB::raw('SUM(amount) as balance, MONTH(effective_date) as month, YEAR(effective_date) as year'))
@@ -53,7 +53,7 @@ class SummaryController extends Controller
             ->whereDate('effective_date','>=',date($request['start_month']))
             ->whereDate('effective_date','<', date(strval($request['end_month'])))
             ->where('type','expense')
-            ->groupBy(DB::raw('YEAR(effective_date) DESC , MONTH(effective_date) DESC'))
+            ->groupBy(DB::raw('YEAR(effective_date) , MONTH(effective_date)'))
             ->get()->all();
         $incomes = DB::table('transactions')
             ->select(DB::raw('SUM(amount) as balance, MONTH(effective_date) as month, YEAR(effective_date) as year'))
@@ -61,7 +61,7 @@ class SummaryController extends Controller
             ->whereDate('effective_date','>=',date($request['start_month']))
             ->whereDate('effective_date','<', date(strval($request['end_month'])))
             ->where('type','income')
-            ->groupBy(DB::raw('YEAR(effective_date) DESC , MONTH(effective_date) DESC'))
+            ->groupBy(DB::raw('YEAR(effective_date) , MONTH(effective_date)'))
             ->get()->all();
         $months = array();
         $balance_progress = array();
