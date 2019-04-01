@@ -14,10 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/about', function (){
+    return view('about.about_ewallet');
+})->name('about');
 
 Auth::routes(['verify' => true]);
 
-    Route::get('/about', 'HomeController@aboutPage')->name('about');
 
 
 Route::middleware(['auth','verified'])->group(function () {
