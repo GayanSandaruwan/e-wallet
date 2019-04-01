@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
+    Route::get('/about', 'HomeController@aboutPage')->name('about');
 
 
 Route::middleware(['auth','verified'])->group(function () {
@@ -42,7 +43,6 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('/summary','SummaryController@transactionSummary')->name('transactionSummary');
 
 
-    Route::get('/about', 'HomeController@aboutPage')->name('about');
     Route::get('/password/update', function(){
         \Illuminate\Support\Facades\Auth::logout();
        return redirect('/password/reset');
@@ -56,3 +56,4 @@ Route::middleware(['auth','verified'])->group(function () {
     });
 
 });
+

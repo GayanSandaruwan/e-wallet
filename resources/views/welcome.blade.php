@@ -109,11 +109,14 @@
                 @auth
                     <div class="links animated pulse infinite fast">
                         <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{url('/about')}}">About Us</a>
                     </div>
                 @else
                     <div class="links animated pulse infinite fast">
                         <a href="{{route('login')}}">Login</a>
                         <a href="{{route('register')}}">Register</a>
+                        <a href="{{url('/about')}}">About Us</a>
+
                     </div>
                 @endauth
 

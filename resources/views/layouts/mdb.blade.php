@@ -60,6 +60,9 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('about') }}"><i class="far fa-question-circle"></i> About</a>
+                        </li>
                     @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('transactionSummaryForm') }}"><i class="fas fa-poll"></i> Summary</a>
