@@ -28,7 +28,9 @@
     <link href="{{asset('mdb/css/mdb.min.css')}}" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="{{asset('mdb/css/style.css')}}" rel="stylesheet">
-    <link href="{{asset('mdb/css/addons/bootstrap-datepicker.css')}}" rel="stylesheet">
+    <link href="{{asset('mdb/css/addons/datepicker.css')}}" rel="stylesheet">
+    <link href="{{asset('mdb/css/addons/datatables.css')}}" rel="stylesheet">
+
 
 </head>
 <body>
@@ -67,8 +69,17 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('transactionSummaryForm') }}"><i class="fas fa-poll"></i> Summary</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('addTransactionForm') }}"><i class="fas fa-sync"></i> Income/Expenses</a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="fas fa-sync"></i> Income/Expenses<span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('addTransactionForm') }}">
+                                    <i class="fas fa-plus-circle"></i> Add Income/Expense</a>
+                                <a class="dropdown-item" href="{{ route('viewTransactions') }}">
+                                    <i class="fas fa-eye"></i> Show Transactions</a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('addAccountForm') }}"><i class="far fa-calendar-plus"></i> Add Account</a>
@@ -121,6 +132,13 @@
         @yield('content')
     </main>
 </div>
+
+<style type="text/css">
+    .btn-rounded {
+        -webkit-border-radius: 10em;
+        border-radius: 10em;
+    }
+</style>
 
 <script type="text/javascript" src="{{asset('mdb/js/jquery-3.3.1.min.js')}}"></script>
 <!-- Bootstrap tooltips -->

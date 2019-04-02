@@ -40,6 +40,10 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/transactions','TransactionController@showAddTransactionForm')->name('addTransactionForm');
     Route::post('/transactions','TransactionController@addTransaction')->name('addTransaction');
 
+    Route::get('/transactions/view','TransactionController@showTransactions')->name('viewTransactions');
+    Route::post('/transactions/edit','TransactionController@editTransactions')->name('editTransaction');
+
+
 
     Route::get('/summary','SummaryController@showTransactionSummaryForm')->name('transactionSummaryForm');
     Route::post('/summary','SummaryController@transactionSummary')->name('transactionSummary');

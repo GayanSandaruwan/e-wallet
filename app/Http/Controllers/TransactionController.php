@@ -18,6 +18,8 @@ class TransactionController extends Controller
 {
     private $add_transaction_form = "transaction.add_transaction";
 
+    private $view_transaction = "transaction.view_transaction";
+
     public function showAddTransactionForm()
     {
 
@@ -125,5 +127,67 @@ class TransactionController extends Controller
 
         Log::debug($transaction);
         return $this->showAddTransactionForm()->with("transaction",$transaction)->with('updated_account',$updated_account);
+    }
+
+
+    public function showTransactions(){
+
+        $user_id = Auth::user()->getAuthIdentifier();
+        $transactions_db = Transaction::with('account')->where('user_id',$user_id)->get()->all();
+
+        $transactions = array();
+        foreach ($transactions_db as $transaction){
+            $trans_obj = array(
+                'trans_desc' => $transaction->trans_desc,
+                'type' => $transaction->type,
+                'effective_date' => $transaction->effective_date,
+                'amount' => $transaction->amount,
+                'account_name' => $transaction->account["account_name"],
+                'transaction_id' => $transaction->id,
+                'account_id' =>$transaction->account_id
+
+            );
+
+            array_push($transactions, $trans_obj);
+
+        }
+//        var_dump($transactions);
+
+
+        return View::make($this->view_transaction)->with("transactions",$transactions);
+    }
+
+    public function editTransactions(Request $request){
+        $this->validator($request->all())->validate();
+
+
+        $transaction = Transaction::where("id",$request["transaction_id"])->first();
+        $account = Account::where("id",$request["account_id"])->first();
+
+        if (strcmp($transaction["type"],"income") ==0 and strcmp($request["type"],"income") ==0){
+            $account->balance = $account->balance - $transaction->amount + abs($request["amount"]);
+        }
+        else if (strcmp($transaction["type"],"income") ==0 and strcmp($request["type"],"expense") ==0){
+            $account->balance = $account->balance - $transaction->amount - abs($request["amount"]);
+        }
+        else if (strcmp($transaction["type"],"expense") ==0 and strcmp($request["type"],"income") ==0){
+            $account->balance = $account->balance + $transaction->amount + abs($request["amount"]);
+        }
+        else if (strcmp($transaction["type"],"expense") ==0 and strcmp($request["type"],"expense") ==0){
+            $account->balance = $account->balance + $transaction->amount - abs($request["amount"]);
+        }
+
+        $account->save();
+
+        $transaction->amount = $request["amount"];
+        $transaction->trans_desc = $request["trans_desc"];
+        $transaction->type = $request["type"];
+        $transaction->effective_date = $request["effective_date"];
+
+        $transaction->save();
+
+//        var_dump($transaction);
+        return redirect(route("viewTransactions"));
+
     }
 }
