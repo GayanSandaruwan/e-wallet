@@ -75,3 +75,13 @@
     </div>
 </div>
 @endsection
+
+@section('body-js')
+
+    <style>
+        .bg {
+            /* The image used */
+            background-image: url("{{asset('/mdb/img/background/register.jpg')}}");
+        }
+    </style>
+    @endsection

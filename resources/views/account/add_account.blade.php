@@ -58,3 +58,14 @@
         </div>
     </div>
 @endsection
+
+@section('body-js')
+    <style>
+        .bg {
+            /* The image used */
+            background-image: url("{{asset('/mdb/img/background/add account.jpg')}}");
+
+        }
+    </style>
+
+    @endsection

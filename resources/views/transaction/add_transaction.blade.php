@@ -115,6 +115,13 @@
 @endsection
 
 @section('body-js')
+    <style>
+        .bg {
+            /* The image used */
+            background-image: url("{{asset('/mdb/img/background/add income.jpg')}}");
+
+        }
+    </style>
 
     <script type="text/javascript">
 

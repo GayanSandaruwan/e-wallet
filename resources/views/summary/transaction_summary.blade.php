@@ -82,6 +82,14 @@
 @endsection
 
 @section('body-js')
+
+    <style>
+        .bg {
+            /* The image used */
+            background-image: url("{{asset('/mdb/img/background/summary.jpg')}}");
+
+        }
+    </style>
     <script type="text/javascript">
 
         {{-- Data Picker Initialization--}}

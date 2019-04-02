@@ -81,10 +81,20 @@
                     font-size: 84px;
                 }
             }
+            .bg {
+                /* The image used */
+                /* Half height */
+                height: 90%;
+                background-image: url("{{asset('/mdb/img/background/home.jpg')}}");
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height bg">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth

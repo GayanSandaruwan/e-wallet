@@ -34,6 +34,8 @@
 
 </head>
 <body>
+
+<div class="bg">
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
@@ -134,10 +136,24 @@
 </div>
 
 <style type="text/css">
+
+    body, html {
+        height: 100%;
+    }
     .btn-rounded {
         -webkit-border-radius: 10em;
         border-radius: 10em;
     }
+    .bg {
+         /* The image used */
+         /* Half height */
+         height: 91%;
+
+         /* Center and scale the image nicely */
+         background-position: center;
+         background-repeat: no-repeat;
+         background-size: cover;
+     }
 </style>
 
 <script type="text/javascript" src="{{asset('mdb/js/jquery-3.3.1.min.js')}}"></script>
@@ -151,5 +167,18 @@
 <script type="text/javascript" src="{{asset('mdb/js/addons/bootstrap-datepicker.js')}}"></script>
 
     @yield('body-js')
+
+</div>
+<!-- Footer -->
+<footer class="page-footer font-small aqua-gradient">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/"> ewalletlk.herokuapp.com</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 </body>
 </html>
