@@ -104,6 +104,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('about') }}"><i class="far fa-question-circle"></i> About</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('currConv') }}"><i class="fas fa-dollar-sign"></i> Currency Converter</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <i class="fas fa-user-tie"></i> {{ Auth::user()->name }} <span class="caret"></span>

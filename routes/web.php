@@ -18,6 +18,10 @@ Route::get('/about', function (){
     return view('about.about_ewallet');
 })->name('about');
 
+Route::get("/currency/converter", function (){
+    return view('curr_conv.curr_conv');
+})->name('currConv');
+
 Auth::routes(['verify' => true]);
 
 
