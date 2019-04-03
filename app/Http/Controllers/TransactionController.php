@@ -190,4 +190,28 @@ class TransactionController extends Controller
         return redirect(route("viewTransactions"));
 
     }
+
+    public function deleteTransactions(Request $request){
+//        $this->validator($request->all())->validate();
+
+
+        $transaction = Transaction::find($request["transaction_id"]);
+        var_dump($transaction);
+        $account = Account::where("id",$request["account_id"])->first();
+
+        if (strcmp($transaction["type"],"income") ==0){
+            $account->balance = $account->balance - $transaction->amount;
+        }
+        else if (strcmp($transaction["type"],"expense") ==0){
+            $account->balance = $account->balance + $transaction->amount;
+        }
+
+        $account->save();
+
+        $transaction->delete();
+
+//        var_dump($transaction);
+        return redirect(route("viewTransactions"));
+
+    }
 }

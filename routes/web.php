@@ -42,6 +42,7 @@ Route::middleware(['auth','verified'])->group(function () {
 
     Route::get('/transactions/view','TransactionController@showTransactions')->name('viewTransactions');
     Route::post('/transactions/edit','TransactionController@editTransactions')->name('editTransaction');
+    Route::post('/transactions/delete','TransactionController@deleteTransactions')->name('deleteTransaction');
 
 
 
