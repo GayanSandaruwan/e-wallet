@@ -18,7 +18,6 @@
                                     </div>
                                     <div class="form-group mx-sm-3 mb-2">
                                         <select class="form-control" id="currency-1" required>
-                                            <option>PLN</option>
                                             <option>EUR</option>
                                             <option>USD</option>
                                             <option>LKR</option>
@@ -29,11 +28,10 @@
                                         <select class="form-control" id="currency-2" required>
                                             <option>EUR</option>
                                             <option>USD</option>
-                                            <option>PLN</option>
                                             <option>LKR</option>
                                         </select>
                                     </div>
-                                    <button class="btn calculate-btn btn-primary mb-2">Show me the result!</button>
+                                    <button  class="btn calculate-btn btn-primary mb-2">Show me the result!</button>
                                 </form>
                                 <div class="result">
                                     <p>
@@ -57,7 +55,7 @@
 @section('body-js')
 
     <script>
-        var crrncy = {'EUR': {'PLN': 4.15, 'USD': 0.83, 'LKR': 196.42}, 'USD': {'PLN': 3.45, 'EUR': 1.2, 'LKR': 174.71}}
+        var crrncy = {'EUR': {'USD': 0.83, 'LKR': 196.42}, 'USD': {'EUR': 1.2, 'LKR': 174.71}}
         var btn = document.querySelector('.calculate-btn');
         var baseCurrencyInput = document.getElementById('currency-1');
         var secondCurrencyInput = document.getElementById('currency-2');
@@ -93,6 +91,9 @@
 
         btn.addEventListener('click', convertCurrency);
 
+        amountInput.addEventListener('change', convertCurrency);
+        baseCurrencyInput.addEventListener('change', convertCurrency);
+        secondCurrencyInput.addEventListener('change', convertCurrency);
 
     </script>
 @endsection
