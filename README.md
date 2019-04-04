@@ -1,10 +1,12 @@
 # e-wallet
 e-wallet handles accounts and daily transactions, + gives summary reports goals and goal notifications
 
-Prerequists 
+# Prerequists 
 1. My SQl server
 2. php 7.*
 3. php composer
+
+# How to setup
 4. create a tababase in my sql ( create dabasase ewallet
 5. fill the .env file in proect with correct credentials
 6. Open a command line in project directory
