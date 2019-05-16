@@ -43,7 +43,7 @@ class SummaryController extends Controller
         $balances = DB::table('transactions')
             ->select(DB::raw('SUM(amount) as balance, MONTH(effective_date) as month, YEAR(effective_date) as year'))
             ->where('account_id',$request['account_id'])
-            ->whereDate('effective_date','>=',date(strval($request['start_month'])))
+            ->whereDate('effective_date','>=',$request['start_month'])
             ->whereDate('effective_date','<', date(strval($request['end_month'])))
             ->groupBy(DB::raw('YEAR(effective_date) , MONTH(effective_date)'))
             ->get()->all();
