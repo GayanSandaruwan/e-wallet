@@ -41,7 +41,7 @@ class SummaryController extends Controller
         $this->validator($request->all())->validate();
 
         $balances = DB::table('transactions')
-            ->select(DB::raw('SUM(amount) as balance, MONTH(effective_date) as month, YEAR(effective_date) as year'))
+            ->select(DB::raw('SUM(CASE WHEN type="expense" THEN (amount*-1) WHEN type="income" THEN amount ELSE 0 END) as balance, MONTH(effective_date) as month, YEAR(effective_date) as year'))
             ->where('account_id',$request['account_id'])
             ->whereDate('effective_date','>=',$request['start_month'])
             ->whereDate('effective_date','<', date(strval($request['end_month'])))
